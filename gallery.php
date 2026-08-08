@@ -1,3 +1,7 @@
+<?php 
+include ("admin/db-conn.php");
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -57,135 +61,32 @@
 <section class="section-pad">
   <div class="container">
     <div class="row g-3">
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-01.jpg"><img class="gallery-thumb" src="assets/aradhya-image-01.jpg" alt="Aradhya Agro Industries image 1" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-02.jpg"><img class="gallery-thumb" src="assets/aradhya-image-02.jpg" alt="Aradhya Agro Industries image 2" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-03.jpg"><img class="gallery-thumb" src="assets/aradhya-image-03.jpg" alt="Aradhya Agro Industries image 3" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-04.jpg"><img class="gallery-thumb" src="assets/aradhya-image-04.jpg" alt="Aradhya Agro Industries image 4" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-05.jpg"><img class="gallery-thumb" src="assets/aradhya-image-05.jpg" alt="Aradhya Agro Industries image 5" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-06.jpg"><img class="gallery-thumb" src="assets/aradhya-image-06.jpg" alt="Aradhya Agro Industries image 6" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-07.jpg"><img class="gallery-thumb" src="assets/aradhya-image-07.jpg" alt="Aradhya Agro Industries image 7" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-08.jpg"><img class="gallery-thumb" src="assets/aradhya-image-08.jpg" alt="Aradhya Agro Industries image 8" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-09.jpg"><img class="gallery-thumb" src="assets/aradhya-image-09.jpg" alt="Aradhya Agro Industries image 9" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-10.jpg"><img class="gallery-thumb" src="assets/aradhya-image-10.jpg" alt="Aradhya Agro Industries image 10" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-11.jpg"><img class="gallery-thumb" src="assets/aradhya-image-11.jpg" alt="Aradhya Agro Industries image 11" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-12.jpg"><img class="gallery-thumb" src="assets/aradhya-image-12.jpg" alt="Aradhya Agro Industries image 12" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-13.jpg"><img class="gallery-thumb" src="assets/aradhya-image-13.jpg" alt="Aradhya Agro Industries image 13" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-14.jpg"><img class="gallery-thumb" src="assets/aradhya-image-14.jpg" alt="Aradhya Agro Industries image 14" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-15.jpg"><img class="gallery-thumb" src="assets/aradhya-image-15.jpg" alt="Aradhya Agro Industries image 15" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-16.jpg"><img class="gallery-thumb" src="assets/aradhya-image-16.jpg" alt="Aradhya Agro Industries image 16" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-17.jpg"><img class="gallery-thumb" src="assets/aradhya-image-17.jpg" alt="Aradhya Agro Industries image 17" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-18.jpg"><img class="gallery-thumb" src="assets/aradhya-image-18.jpg" alt="Aradhya Agro Industries image 18" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-19.jpg"><img class="gallery-thumb" src="assets/aradhya-image-19.jpg" alt="Aradhya Agro Industries image 19" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-20.jpg"><img class="gallery-thumb" src="assets/aradhya-image-20.jpg" alt="Aradhya Agro Industries image 20" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-21.jpg"><img class="gallery-thumb" src="assets/aradhya-image-21.jpg" alt="Aradhya Agro Industries image 21" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-22.jpg"><img class="gallery-thumb" src="assets/aradhya-image-22.jpg" alt="Aradhya Agro Industries image 22" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-23.jpg"><img class="gallery-thumb" src="assets/aradhya-image-23.jpg" alt="Aradhya Agro Industries image 23" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-24.jpg"><img class="gallery-thumb" src="assets/aradhya-image-24.jpg" alt="Aradhya Agro Industries image 24" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-25.jpg"><img class="gallery-thumb" src="assets/aradhya-image-25.jpg" alt="Aradhya Agro Industries image 25" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-26.jpg"><img class="gallery-thumb" src="assets/aradhya-image-26.jpg" alt="Aradhya Agro Industries image 26" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-27.jpg"><img class="gallery-thumb" src="assets/aradhya-image-27.jpg" alt="Aradhya Agro Industries image 27" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-28.jpg"><img class="gallery-thumb" src="assets/aradhya-image-28.jpg" alt="Aradhya Agro Industries image 28" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-29.jpg"><img class="gallery-thumb" src="assets/aradhya-image-29.jpg" alt="Aradhya Agro Industries image 29" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-30.jpg"><img class="gallery-thumb" src="assets/aradhya-image-30.jpg" alt="Aradhya Agro Industries image 30" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-31.jpg"><img class="gallery-thumb" src="assets/aradhya-image-31.jpg" alt="Aradhya Agro Industries image 31" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-32.jpg"><img class="gallery-thumb" src="assets/aradhya-image-32.jpg" alt="Aradhya Agro Industries image 32" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-33.jpg"><img class="gallery-thumb" src="assets/aradhya-image-33.jpg" alt="Aradhya Agro Industries image 33" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-34.jpg"><img class="gallery-thumb" src="assets/aradhya-image-34.jpg" alt="Aradhya Agro Industries image 34" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-35.jpg"><img class="gallery-thumb" src="assets/aradhya-image-35.jpg" alt="Aradhya Agro Industries image 35" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-36.jpg"><img class="gallery-thumb" src="assets/aradhya-image-36.jpg" alt="Aradhya Agro Industries image 36" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-37.jpg"><img class="gallery-thumb" src="assets/aradhya-image-37.jpg" alt="Aradhya Agro Industries image 37" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-38.jpg"><img class="gallery-thumb" src="assets/aradhya-image-38.jpg" alt="Aradhya Agro Industries image 38" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-39.jpg"><img class="gallery-thumb" src="assets/aradhya-image-39.jpg" alt="Aradhya Agro Industries image 39" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-40.jpg"><img class="gallery-thumb" src="assets/aradhya-image-40.jpg" alt="Aradhya Agro Industries image 40" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-41.jpg"><img class="gallery-thumb" src="assets/aradhya-image-41.jpg" alt="Aradhya Agro Industries image 41" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-42.jpg"><img class="gallery-thumb" src="assets/aradhya-image-42.jpg" alt="Aradhya Agro Industries image 42" loading="lazy"></div>
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="gallery-thumb-wrap" data-full="assets/aradhya-image-43.jpg"><img class="gallery-thumb" src="assets/aradhya-image-43.jpg" alt="Aradhya Agro Industries image 43" loading="lazy"></div>
-      </div>
+      
+      <?php
+      // Fetch ALL images from the gallery table
+      $gallery_sql = "SELECT * FROM gallery ORDER BY ID DESC"; // ID DESC taaki nayi images pehle aayein
+      $gallery_res = mysqli_query($conn, $gallery_sql);
+
+      if($gallery_res && mysqli_num_rows($gallery_res) > 0) {
+          while($img = mysqli_fetch_assoc($gallery_res)) {
+              
+              // Path properly format kar rahe hain taaki double slash ka issue na aaye
+              $full_img_path = rtrim($site, '/') . "/admin/" . $img['image_path'];
+              ?>
+              
+              <div class="col-6 col-md-4 col-lg-3">
+                <!-- data-full me image ka path pass karna zaroori hai tabhi click karne par modal me image khulegi -->
+                <div class="gallery-thumb-wrap" data-full="<?= $full_img_path; ?>">
+                  <img class="gallery-thumb" src="<?= $full_img_path; ?>" alt="<?= htmlspecialchars($img['image_name']); ?>" loading="lazy">
+                </div>
+              </div>
+              
+              <?php
+          }
+      } else {
+          echo "<div class='col-12'><p class='text-center'>No images uploaded yet.</p></div>";
+      }
+      ?>
 
     </div>
   </div>

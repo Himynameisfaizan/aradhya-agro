@@ -1,2 +1,6 @@
 vendor
 send_mail.php
+admin/assets/vendors
+admin/assets/new folder
+admin/.htaccess
+.env

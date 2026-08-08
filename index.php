@@ -1,3 +1,10 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+include ("./admin/db-conn.php");
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -223,12 +230,31 @@
       <span class="divider-leaf">Our Products</span>
       <h2>Perfect Sizes for Every Need</h2>
     </div>
+    
     <div class="products-strip">
-      <div class="product-mini"><img src="assets/bottle-500ml.jpg" alt="500ml bottle"><h4>500 ML</h4><span>Trial / Retail</span></div>
-      <div class="product-mini"><img src="assets/bottle-1l.jpg" alt="1 litre bottle"><h4>1 Litre</h4><span>Most Popular</span></div>
-      <div class="product-mini"><img src="assets/bottle-2l.jpg" alt="2 litre bottle"><h4>2 Litre</h4><span>Family & Commercial</span></div>
-      <div class="product-mini"><i class="bi bi-boxes" style="font-size:2.4rem;color:var(--gold-bright);margin-top:2rem;display:block;"></i><h4>5L / 15L / Bulk</h4><span>Export &amp; B2B</span></div>
+      <?php
+      // Fetch dynamic products from the database (Active status and limit to 4 for the strip)
+      $product_sql = "SELECT * FROM products WHERE status = 1 ORDER BY id ASC LIMIT 5";
+      $product_res = mysqli_query($conn, $product_sql);
+
+      if(mysqli_num_rows($product_res) > 0) {
+          while($row = mysqli_fetch_assoc($product_res)) {
+              // Adjust the path to match your folder structure where images are saved
+              $img_path = 'uploads/products/' . $row['pro_img']; 
+              ?>
+              <div class="product-mini">
+                <img src="<?= $img_path; ?>" alt="<?= $row['pro_name']; ?>" onerror="this.src='assets/bottle-1l.jpg';">
+                <h4><?= $row['pro_name']; ?></h4>
+                <span>₹<?= $row['selling_price']; ?></span>
+              </div>
+              <?php
+          }
+      } else {
+          echo "<p>Products updating soon...</p>";
+      }
+      ?>
     </div>
+    
     <div class="text-center mt-4">
       <a href="products.php" class="link-arrow">View all products &amp; specifications <i class="bi bi-arrow-right"></i></a>
     </div>
@@ -269,12 +295,29 @@
       <span class="divider-leaf">Our Gallery</span>
       <h2>Visual Story of Purity</h2>
     </div>
+    
     <div class="gallery-mini">
-      <img src="assets/aradhya-image-01.jpg" alt="Aradhya Agro Industries image 1" loading="lazy">
-      <img src="assets/aradhya-image-02.jpg" alt="Aradhya Agro Industries image 2" loading="lazy">
-      <img src="assets/aradhya-image-03.jpg" alt="Aradhya Agro Industries image 3" loading="lazy">
-      <img src="assets/aradhya-image-04.jpg" alt="Aradhya Agro Industries image 4" loading="lazy">
+      <?php
+      $gallery_sql = "SELECT * FROM gallery LIMIT 4";
+      $gallery_res = mysqli_query($conn, $gallery_sql);
+
+      if(mysqli_num_rows($gallery_res) > 0) {
+          while($img = mysqli_fetch_assoc($gallery_res)) {
+              
+              // .env wale $site se aakhiri slash hata kar, usme /admin/ jodenge, 
+              // kyunki $img['image_path'] mein pehle se hi 'uploads/gallery/' maujood hai
+              $full_img_path = rtrim($site, '/') . "/admin/" . $img['image_path'];
+              
+              ?>
+              <img src="<?= $full_img_path; ?>" alt="<?= $img['image_name']; ?>" loading="lazy">
+              <?php
+          }
+      } else {
+          echo "<p>No images found in gallery.</p>";
+      }
+      ?>
     </div>
+    
     <div class="text-center mt-4">
       <a href="gallery.php" class="link-arrow">View full gallery <i class="bi bi-arrow-right"></i></a>
     </div>
@@ -302,9 +345,8 @@
     effect:'fade', fadeEffect:{ crossFade:true }, speed:800
   });
 </script>
-<!-- ============================================ -->
+
 <!-- ========== FOOTER ========== -->
-<!-- ============================================ -->
 <footer>
   <div class="footer-main">
     <div class="container">

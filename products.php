@@ -1,3 +1,4 @@
+<?php include ("./admin/db-conn.php"); ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,6 +36,7 @@
     </div>
   </div>
 </nav>
+
 <style>
   .product-card{ background:#fff; border-radius:24px; overflow:hidden; border:1px solid rgba(122,30,43,.06); box-shadow:0 8px 30px rgba(42,33,20,.06); height:100%; display:flex; flex-direction:column; transition:all .4s cubic-bezier(.25,.8,.25,1.2); }
   .product-card:hover{ transform:translateY(-10px); box-shadow:0 22px 44px rgba(42,33,20,.16); border-color:rgba(227,166,4,.3); }
@@ -65,107 +67,67 @@
   <div class="container">
     <div class="row g-4">
 
-      <div class="col-md-6 col-lg-4">
-        <div class="product-card">
-          <div class="product-img-wrap"><img src="assets/bottle-500ml.jpg" alt="500ml mustard oil bottle" loading="lazy"></div>
-          <div class="product-body">
-            <span class="size-tag">500 ML</span>
-            <h3>Trial / Retail Pack</h3>
-            <p>Perfect starter size for small families and first-time customers wanting to experience authentic purity. SKU: AA-MO-500</p>
-            <ul>
-              <li><i class="bi bi-check-circle-fill"></i> Glass bottle packaging</li>
-              <li><i class="bi bi-check-circle-fill"></i> 6-month shelf life</li>
-              <li><i class="bi bi-check-circle-fill"></i> Ideal for gifting</li>
-            </ul>
-            <a href="contact.php" class="btn-order text-center">Order Now</a>
-          </div>
-        </div>
-      </div>
+      <?php
+      $product_sql = "SELECT * FROM products WHERE status = 1 ORDER BY FIELD(id, 3, 6, 5, 1, 2, 4)";
+      $product_res = mysqli_query($conn, $product_sql);
 
-      <div class="col-md-6 col-lg-4">
-        <div class="product-card">
-          <div class="product-img-wrap"><img src="assets/bottle-1l.jpg" alt="1 litre mustard oil bottle" loading="lazy"></div>
-          <div class="product-body">
-            <span class="size-tag">1 LITRE</span>
-            <h3>Most Popular Pack</h3>
-            <p>The everyday choice for health-conscious families, trusted across 15+ countries. SKU: AA-MO-1L</p>
-            <ul>
-              <li><i class="bi bi-check-circle-fill"></i> PET food-grade bottle</li>
-              <li><i class="bi bi-check-circle-fill"></i> 12-month shelf life</li>
-              <li><i class="bi bi-check-circle-fill"></i> Export-ready packaging</li>
-            </ul>
-            <a href="contact.php" class="btn-order text-center">Order Now</a>
-          </div>
-        </div>
-      </div>
+      if($product_res && mysqli_num_rows($product_res) > 0) {
+          while($row = mysqli_fetch_assoc($product_res)) {
+              
+              $img_path = rtrim($site, '/') . "/admin/assets/img/uploads/" . $row['pro_img'];
+              
+              $description_with_icons = str_replace('<li>', '<li><i class="bi bi-check-circle-fill"></i> ', $row['description']);
+              
+              $size_tag = "SIZE";
+              if (stripos($row['pro_name'], 'Trial') !== false) $size_tag = "500 ML";
+              elseif (stripos($row['pro_name'], 'Popular') !== false) $size_tag = "1 LITRE";
+              elseif (stripos($row['pro_name'], 'Family') !== false) $size_tag = "2 LITRE";
+              elseif (stripos($row['pro_name'], 'Institutional') !== false) $size_tag = "5 LITRE";
+              elseif (stripos($row['pro_name'], 'Export') !== false) $size_tag = "15 LITRE";
+              elseif (stripos($row['pro_name'], 'Cake') !== false) $size_tag = "BY-PRODUCT";
 
-      <div class="col-md-6 col-lg-4">
-        <div class="product-card">
-          <div class="product-img-wrap"><img src="assets/bottle-2l.jpg" alt="2 litre mustard oil bottle" loading="lazy"></div>
-          <div class="product-body">
-            <span class="size-tag">2 LITRE</span>
-            <h3>Family &amp; Commercial</h3>
-            <p>Economical bulk option for large families, restaurants, and hotels. SKU: AA-MO-2L</p>
-            <ul>
-              <li><i class="bi bi-check-circle-fill"></i> Heavy-duty canister</li>
-              <li><i class="bi bi-check-circle-fill"></i> 18-month shelf life</li>
-              <li><i class="bi bi-check-circle-fill"></i> FCL container ready</li>
-            </ul>
-            <a href="contact.php" class="btn-order text-center">Bulk Inquiry</a>
-          </div>
-        </div>
-      </div>
+              $btn_text = "Order Now";
+              $btn_link = "contact.php";
+              if (stripos($row['pro_name'], 'Export') !== false) {
+                  $btn_text = "Export Inquiry";
+                  $btn_link = "export.php";
+              } elseif (stripos($row['pro_name'], 'Institutional') !== false || stripos($row['pro_name'], 'Family') !== false) {
+                  $btn_text = "Bulk Inquiry";
+              } elseif (stripos($row['pro_name'], 'Cake') !== false) {
+                  $btn_text = "Enquire";
+              }
+              ?>
+              
+              <div class="col-md-6 col-lg-4">
+                <div class="product-card">
+                  <div class="product-img-wrap">
+                    <img src="<?= $img_path; ?>" alt="<?= htmlspecialchars($row['pro_name']); ?>" loading="lazy">
+                  </div>
+                  <div class="product-body">
+                    <span class="size-tag"><?= $size_tag; ?></span>
+                    <h3><?= htmlspecialchars($row['pro_name']); ?></h3>
+                    
+                    <?= $row['short_desc']; ?>
+                    <?= $description_with_icons; ?>
+                    
+                    <a href="<?= $btn_link; ?>" class="btn-order text-center"><?= $btn_text; ?></a>
+                  </div>
+                </div>
+              </div>
 
-      <div class="col-md-6 col-lg-4">
-        <div class="product-card">
-          <div class="product-img-wrap"><i class="bi bi-droplet-half"></i></div>
-          <div class="product-body">
-            <span class="size-tag">5 LITRE</span>
-            <h3>Institutional Pack</h3>
-            <p>Suited to caterers, small restaurants, and community kitchens. SKU: AA-MO-5L</p>
-            <ul>
-              <li><i class="bi bi-check-circle-fill"></i> Heavy-duty canister</li>
-              <li><i class="bi bi-check-circle-fill"></i> 18-month shelf life</li>
-            </ul>
-            <a href="contact.php" class="btn-order text-center">Bulk Inquiry</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4">
-        <div class="product-card">
-          <div class="product-img-wrap"><i class="bi bi-truck"></i></div>
-          <div class="product-body">
-            <span class="size-tag">15 LITRE</span>
-            <h3>Export / Bulk Pack</h3>
-            <p>Designed for distributors and FCL export shipments. SKU: AA-MO-15L</p>
-            <ul>
-              <li><i class="bi bi-check-circle-fill"></i> Export-grade jerrycan</li>
-              <li><i class="bi bi-check-circle-fill"></i> 24-month shelf life</li>
-            </ul>
-            <a href="export.php" class="btn-order text-center">Export Inquiry</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4">
-        <div class="product-card">
-          <div class="product-img-wrap"><i class="bi bi-basket3"></i></div>
-          <div class="product-body">
-            <span class="size-tag">BY-PRODUCT</span>
-            <h3>Mustard Oil Cake</h3>
-            <p>Natural, protein-rich by-product of cold pressing — used as organic manure and cattle feed. SKU: AA-CAKE</p>
-            <ul>
-              <li><i class="bi bi-check-circle-fill"></i> 100% natural</li>
-              <li><i class="bi bi-check-circle-fill"></i> Sold in bulk quantities</li>
-            </ul>
-            <a href="contact.php" class="btn-order text-center">Enquire</a>
-          </div>
-        </div>
-      </div>
+              <?php
+          }
+      } else {
+          echo "<div class='col-12'><p class='text-center'>Products loading soon...</p></div>";
+      }
+      ?>
 
     </div>
   </div>
+</section>
+
+<!-- NUTRITIONAL FACTS (Ye Static hi rahega jaisa tumne diya hai) -->
+<section class="section-pad" style="background:var(--cream-deep);">
 </section>
 
 <!-- NUTRITIONAL FACTS -->
@@ -201,9 +163,9 @@
     </div>
   </div>
 </section>
-<!-- ============================================ -->
+
 <!-- ========== FOOTER ========== -->
-<!-- ============================================ -->
+
 <footer>
   <div class="footer-main">
     <div class="container">
