@@ -14,18 +14,18 @@ if (file_exists('vendor/autoload.php')) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['phone'])) {
         echo json_encode(['status' => 'error', 'message' => 'Please fill in all mandatory fields.']);
         exit;
     }
 
-    $name        = htmlspecialchars(trim($_POST['name']));
-    $email       = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-    $phone       = htmlspecialchars(trim($_POST['phone']));
-    $country     = htmlspecialchars(trim($_POST['country']));
+    $name = htmlspecialchars(trim($_POST['name']));
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $phone = htmlspecialchars(trim($_POST['phone']));
+    $country = htmlspecialchars(trim($_POST['country']));
     $requirement = htmlspecialchars(trim($_POST['requirement']));
-    $message     = htmlspecialchars(trim($_POST['message']));
+    $message = htmlspecialchars(trim($_POST['message']));
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo json_encode(['status' => 'error', 'message' => 'Please enter a valid Email address.']);
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
 
-   // --- OPTION A: Hostinger SMTP (Most recommended & 100% Reliable for Hostinger) ---
+        // --- OPTION A: Hostinger SMTP (Most recommended & 100% Reliable for Hostinger) ---
         // $mail->Host       = 'smtp.hostinger.com';
         // $mail->SMTPAuth   = true;
         // $mail->Username   = 'info@yourdomain.com';      // Hostinger me banaya email
@@ -46,24 +46,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // ---- GMAIL SMTP SETTINGS ----
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'faizanonlink@gmail.com';
-        $mail->Password   = 'bfec zlwz bzkr rsuu'; // 16-digit App Password
-        
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'faizanonlink@gmail.com';
+        $mail->Password = 'bfec zlwz bzkr rsuu'; // 16-digit App Password
+
         // Hostinger par Port 587 + STARTTLS sabse best chalta hai
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        $mail->Port = 587;
 
         // ---- SENDER & RECEIVER ----
-        $mail->setFrom('faizanonlink@gmail.com', 'Aradhya Agro Website'); 
+        $mail->setFrom('faizanonlink@gmail.com', 'Aradhya Agro Website');
         $mail->addAddress('faizanonlink@gmail.com', 'Aradhya Agro Admin');
         $mail->addReplyTo($email, $name);
 
         // ---- EMAIL CONTENT ----
         $mail->isHTML(true);
         $mail->Subject = "New Product Inquiry: " . $requirement . " (" . $name . ")";
-        
+
         $mail->Body = "
         <div style='font-family: Arial, sans-serif; max-width: 600px; padding: 20px; border: 1px solid #ddd; border-radius: 8px;'>
             <h2 style='color: #2e6c36; border-bottom: 2px solid #2e6c36; padding-bottom: 10px;'>New Website Inquiry</h2>
@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail->send();
         echo json_encode(['status' => 'success', 'message' => 'Thank you! Your inquiry has been sent successfully. We will get back to you soon.']);
-        
+
     } catch (Exception $e) {
         echo json_encode(['status' => 'error', 'message' => 'Message could not be sent. Mailer Error: ' . $mail->ErrorInfo]);
     }

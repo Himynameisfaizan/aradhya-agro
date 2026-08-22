@@ -55,12 +55,12 @@ if (!isset($_SESSION['admin_logged_in'])) {
             </ul>
         </li>
 
-         <li>
+        <li>
             <a href="add-gallery.php">
                 <i class="fas fa-images" style="color: #8e44ad;"></i>
                 <span>Gallery</span>
             </a>
-        </li> 
+        </li>
 
         <!-- <li>
             <a class="has-arrow" href="#"><i class="fas fa-fire" style="color: #ff6b6b;"></i><span>Service</span></a>
@@ -97,14 +97,14 @@ if (!isset($_SESSION['admin_logged_in'])) {
         </li> -->
 
 
-        <!-- <li>
+        <li>
             <a class="has-arrow" href="#"><i class="fas fa-envelope" style="color: #27ae60;"></i> <span>Contact
                     Page</span></a>
             <ul>
                 <li><a href="add_contact.php">Edit Contact Info</a></li>
                 <li><a href="new-leads.php">Inquiries</a></li>
             </ul>
-        </li> -->
+        </li>
 
         <!-- <li>
             <a href="about_us.php">
